@@ -35,7 +35,7 @@ class GoogleImgSearch {
             if (img.hasAttr("src")) {
                 // it is base64 jpeg image.
                 // parsing by jsoup, not loaded. (1x1 gif image base64 in html)
-                // so it is empty (tumb = "")
+                // so it is empty (thumb = "")
             }
             val a = div.select("a[class=VFACy kGQAp sMi44c lNHeqe WGvvNb]").first()
             val link = a.attr("href")
