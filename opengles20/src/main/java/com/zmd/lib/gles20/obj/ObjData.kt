@@ -31,6 +31,9 @@ class ObjData(val name: String = "") {
     var normals: FloatArray = FloatArray(1)
         private set
     var textureCodes: FloatArray = FloatArray(1)
+        private set
+    var scalars = FloatArray(1)
+        private set
 
     fun load(context: Context, fileName: String) {
         try {
@@ -54,6 +57,7 @@ class ObjData(val name: String = "") {
             parseIndices(json)
             parseDiffuse(json)
             parseTextureCodes(json)
+            parseScalars(json)
             calculateNormal()
         } catch (e: JSONException) {
             e.printStackTrace()
@@ -105,6 +109,18 @@ class ObjData(val name: String = "") {
 
         for (i in 0 until list.length()) {
             textureCodes[i] = list.getDouble(i).toFloat()
+        }
+    }
+
+    @Throws(JSONException::class)
+    private fun parseScalars(json: JSONObject) {
+        if(!json.has("scalars")) return
+
+        val list = json.getJSONArray("scalars")
+        scalars = FloatArray(list.length())
+
+        for(i in 0 until list.length()) {
+            scalars[i] = list.getDouble(i).toFloat()
         }
     }
 
