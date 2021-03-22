@@ -7,6 +7,20 @@ import java.io.IOException
 import kotlin.jvm.Throws
 import kotlin.math.sqrt
 
+/**
+ * to load and parsing json file in assets
+ *
+ * json format
+ *
+ * {
+ *      "vertices" : [-0.5, 0.5, -0.5, ...],
+ *      "indices" : [0, 1, 2, ...],
+ *      "scalars" : [1.0, 0.0, 0.0, 1.0, ...],
+ *      "texture_coords" : [0.0, 0.0, ...],
+ *      "diffuse : [1.0, 1.0, 1.0, 1.0]"
+ * }
+ */
+
 class ObjData(val name: String = "") {
     var vertices: FloatArray = FloatArray(1)
         private set
